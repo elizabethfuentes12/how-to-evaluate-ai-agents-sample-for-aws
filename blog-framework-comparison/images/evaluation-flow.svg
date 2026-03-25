@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 340" font-family="Segoe UI, Arial, sans-serif">
+  <!-- Background -->
+  <rect width="900" height="340" fill="#FAFAFA" rx="8"/>
+
+  <!-- Title -->
+  <text x="450" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#333">How 3 Frameworks Evaluate the Same Agent Output</text>
+
+  <!-- Shared Input Box -->
+  <rect x="345" y="45" width="210" height="55" rx="8" fill="#E3F2FD" stroke="#1565C0" stroke-width="1.5"/>
+  <text x="450" y="68" text-anchor="middle" font-size="12" font-weight="bold" fill="#1565C0">Same Test Data</text>
+  <text x="450" y="85" text-anchor="middle" font-size="10" fill="#555">3 responses + context + rubric</text>
+
+  <!-- Arrows from input -->
+  <line x1="370" y1="100" x2="155" y2="135" stroke="#3F51B5" stroke-width="2" marker-end="url(#arrow-blue)"/>
+  <line x1="450" y1="100" x2="450" y2="135" stroke="#4CAF50" stroke-width="2" marker-end="url(#arrow-green)"/>
+  <line x1="530" y1="100" x2="745" y2="135" stroke="#FF9800" stroke-width="2" marker-end="url(#arrow-orange)"/>
+
+  <!-- Strands Box -->
+  <rect x="20" y="135" width="270" height="185" rx="10" fill="#E8EAF6" stroke="#3F51B5" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <rect x="70" y="140" width="170" height="24" rx="4" fill="#3F51B5"/>
+  <text x="155" y="157" text-anchor="middle" font-size="12" font-weight="bold" fill="white">Strands Agents</text>
+  <rect x="40" y="175" width="110" height="28" rx="5" fill="#C5CAE9"/>
+  <text x="95" y="194" text-anchor="middle" font-size="9" fill="#333">Case(input, expected)</text>
+  <rect x="160" y="175" width="115" height="28" rx="5" fill="#C5CAE9"/>
+  <text x="217" y="194" text-anchor="middle" font-size="9" fill="#333">OutputEvaluator(rubric)</text>
+  <rect x="75" y="215" width="160" height="28" rx="5" fill="#7986CB"/>
+  <text x="155" y="234" text-anchor="middle" font-size="10" font-weight="bold" fill="white">Experiment</text>
+  <rect x="55" y="260" width="200" height="35" rx="6" fill="#3F51B5"/>
+  <text x="155" y="278" text-anchor="middle" font-size="11" font-weight="bold" fill="white">Score (0-1)</text>
+  <text x="155" y="292" text-anchor="middle" font-size="9" fill="#E8EAF6">+ reason</text>
+
+  <!-- PydanticAI Box -->
+  <rect x="315" y="135" width="270" height="185" rx="10" fill="#E8F5E9" stroke="#2E7D32" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <rect x="365" y="140" width="170" height="24" rx="4" fill="#4CAF50"/>
+  <text x="450" y="157" text-anchor="middle" font-size="12" font-weight="bold" fill="white">PydanticAI</text>
+  <rect x="335" y="175" width="110" height="28" rx="5" fill="#C8E6C9"/>
+  <text x="390" y="194" text-anchor="middle" font-size="9" fill="#333">Case(inputs, expected)</text>
+  <rect x="455" y="175" width="115" height="28" rx="5" fill="#C8E6C9"/>
+  <text x="512" y="194" text-anchor="middle" font-size="9" fill="#333">LLMJudge(rubric)</text>
+  <rect x="370" y="215" width="160" height="28" rx="5" fill="#66BB6A"/>
+  <text x="450" y="234" text-anchor="middle" font-size="10" font-weight="bold" fill="white">Dataset</text>
+  <rect x="350" y="260" width="200" height="35" rx="6" fill="#2E7D32"/>
+  <text x="450" y="278" text-anchor="middle" font-size="11" font-weight="bold" fill="white">Score + Pass/Fail</text>
+  <text x="450" y="292" text-anchor="middle" font-size="9" fill="#C8E6C9">+ reason</text>
+
+  <!-- DeepEval Box -->
+  <rect x="610" y="135" width="270" height="185" rx="10" fill="#FFF3E0" stroke="#E65100" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <rect x="660" y="140" width="170" height="24" rx="4" fill="#FF9800"/>
+  <text x="745" y="157" text-anchor="middle" font-size="12" font-weight="bold" fill="white">DeepEval</text>
+  <rect x="630" y="175" width="115" height="28" rx="5" fill="#FFE0B2"/>
+  <text x="687" y="194" text-anchor="middle" font-size="9" fill="#333">LLMTestCase(input, actual)</text>
+  <rect x="755" y="175" width="110" height="28" rx="5" fill="#FFE0B2"/>
+  <text x="810" y="194" text-anchor="middle" font-size="9" fill="#333">GEval(criteria)</text>
+  <rect x="665" y="215" width="160" height="28" rx="5" fill="#FFB74D"/>
+  <text x="745" y="234" text-anchor="middle" font-size="10" font-weight="bold" fill="white">evaluate()</text>
+  <rect x="645" y="260" width="200" height="35" rx="6" fill="#E65100"/>
+  <text x="745" y="278" text-anchor="middle" font-size="11" font-weight="bold" fill="white">Score (0-1)</text>
+  <text x="745" y="292" text-anchor="middle" font-size="9" fill="#FFE0B2">+ reason</text>
+
+  <!-- Footer -->
+  <text x="450" y="332" text-anchor="middle" font-size="11" font-style="italic" fill="#888">Same input → Different APIs → Comparable scores</text>
+
+  <!-- Arrow markers -->
+  <defs>
+    <marker id="arrow-blue" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#3F51B5"/></marker>
+    <marker id="arrow-green" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#4CAF50"/></marker>
+    <marker id="arrow-orange" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#FF9800"/></marker>
+  </defs>
+</svg>

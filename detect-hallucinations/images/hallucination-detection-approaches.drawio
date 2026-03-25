@@ -1,0 +1,103 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Hallucination Detection" id="hall-detect">
+    <mxGraphModel dx="1100" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="500" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="4 Approaches to Hallucination Detection" style="text;html=1;fontSize=16;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="350" y="10" width="400" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Input -->
+        <mxCell id="input" value="&lt;b&gt;Agent Response&lt;/b&gt;&lt;br&gt;+ Source Context" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1565C0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="20" y="200" width="140" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Approach 1: Strands OutputEvaluator -->
+        <mxCell id="a1_box" value="" style="rounded=1;fillColor=#E8EAF6;strokeColor=#3F51B5;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="210" y="60" width="220" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="a1_title" value="&lt;b&gt;1. Strands (Rubric)&lt;/b&gt;" style="text;html=1;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="250" y="65" width="150" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="a1_desc" value="OutputEvaluator + rubric&lt;br&gt;→ Single score (0-1)" style="text;html=1;fontSize=10;fontColor=#555;" vertex="1" parent="1">
+          <mxGeometry x="230" y="90" width="180" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Approach 2: RAGAS -->
+        <mxCell id="a2_box" value="" style="rounded=1;fillColor=#E8F5E9;strokeColor=#2E7D32;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="210" y="170" width="220" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="a2_title" value="&lt;b&gt;2. RAGAS (Claims)&lt;/b&gt;" style="text;html=1;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="250" y="175" width="150" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="a2_desc" value="Faithfulness metric&lt;br&gt;→ Per-claim scores" style="text;html=1;fontSize=10;fontColor=#555;" vertex="1" parent="1">
+          <mxGeometry x="230" y="200" width="180" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Approach 3: Claim Decomposition -->
+        <mxCell id="a3_box" value="" style="rounded=1;fillColor=#FFF3E0;strokeColor=#E65100;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="210" y="280" width="220" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="a3_title" value="&lt;b&gt;3. Claim Decomposition&lt;/b&gt;" style="text;html=1;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="285" width="170" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="a3_desc" value="Decompose → Verify each&lt;br&gt;→ Exact fabricated claims" style="text;html=1;fontSize=10;fontColor=#555;" vertex="1" parent="1">
+          <mxGeometry x="230" y="310" width="180" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Approach 4: Hooks -->
+        <mxCell id="a4_box" value="" style="rounded=1;fillColor=#FCE4EC;strokeColor=#C62828;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="210" y="390" width="220" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="a4_title" value="&lt;b&gt;4. Real-Time (Hooks)&lt;/b&gt;" style="text;html=1;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="250" y="395" width="150" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="a4_desc" value="HookProvider intercepts&lt;br&gt;→ Block before delivery" style="text;html=1;fontSize=10;fontColor=#555;" vertex="1" parent="1">
+          <mxGeometry x="230" y="420" width="180" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Arrows -->
+        <mxCell id="e1" style="rounded=1;strokeWidth=1;" edge="1" parent="1" source="input" target="a1_box"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e2" style="rounded=1;strokeWidth=1;" edge="1" parent="1" source="input" target="a2_box"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e3" style="rounded=1;strokeWidth=1;" edge="1" parent="1" source="input" target="a3_box"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e4" style="rounded=1;strokeWidth=1;" edge="1" parent="1" source="input" target="a4_box"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <!-- Result boxes -->
+        <mxCell id="r1" value="Score: 0.3" style="rounded=1;fillColor=#3F51B5;fontColor=#FFF;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="460" y="90" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="r2" value="2/5 claims OK" style="rounded=1;fillColor=#2E7D32;fontColor=#FFF;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="460" y="200" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="r3" value="❌ champagne&lt;br&gt;❌ TripAdvisor" style="rounded=1;fillColor=#E65100;fontColor=#FFF;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="460" y="305" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="r4" value="⚠️ BLOCKED" style="rounded=1;fillColor=#C62828;fontColor=#FFF;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="460" y="420" width="90" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="re1" style="rounded=0;strokeWidth=1;" edge="1" parent="1" source="a1_box" target="r1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="re2" style="rounded=0;strokeWidth=1;" edge="1" parent="1" source="a2_box" target="r2"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="re3" style="rounded=0;strokeWidth=1;" edge="1" parent="1" source="a3_box" target="r3"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="re4" style="rounded=0;strokeWidth=1;" edge="1" parent="1" source="a4_box" target="r4"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <!-- When labels -->
+        <mxCell id="w1" value="After execution" style="text;html=1;fontSize=9;fontColor=#888;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="550" y="93" width="80" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="w2" value="After execution" style="text;html=1;fontSize=9;fontColor=#888;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="560" y="203" width="80" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="w3" value="After execution" style="text;html=1;fontSize=9;fontColor=#888;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="570" y="315" width="80" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="w4" value="During execution" style="text;html=1;fontSize=9;fontColor=#C62828;fontStyle=3;" vertex="1" parent="1">
+          <mxGeometry x="560" y="423" width="100" height="20" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,99 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Evaluation Flow" id="eval-flow">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="600" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="How 3 Frameworks Evaluate the Same Agent Output" style="text;html=1;fontSize=18;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="350" y="20" width="500" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Shared Input -->
+        <mxCell id="input" value="&lt;b&gt;Same Test Data&lt;/b&gt;&lt;br&gt;3 agent responses&lt;br&gt;+ context + rubric" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1565C0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="520" y="70" width="160" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Strands Path -->
+        <mxCell id="strands_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8EAF6;strokeColor=#3F51B5;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="190" width="350" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="strands_title" value="&lt;b&gt;Strands Agents&lt;/b&gt;" style="text;html=1;fontSize=14;fontStyle=1;fillColor=#3F51B5;fontColor=#FFFFFF;rounded=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="120" y="195" width="180" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="s1" value="Case(input, expected)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C5CAE9;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="60" y="235" width="140" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="s2" value="OutputEvaluator(rubric)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C5CAE9;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="220" y="235" width="150" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="s3" value="Experiment" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#7986CB;fontColor=#FFF;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="120" y="290" width="180" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="s4" value="&lt;b&gt;Score (0-1) + Reason&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#3F51B5;fontColor=#FFF;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="120" y="340" width="180" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="sa1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="s1" target="s3"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="sa2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="s2" target="s3"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="sa3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="s3" target="s4"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <!-- PydanticAI Path -->
+        <mxCell id="pydantic_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#2E7D32;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="430" y="190" width="350" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="pydantic_title" value="&lt;b&gt;PydanticAI&lt;/b&gt;" style="text;html=1;fontSize=14;fontStyle=1;fillColor=#4CAF50;fontColor=#FFFFFF;rounded=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="510" y="195" width="180" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="p1" value="Case(inputs, expected)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="450" y="235" width="140" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="p2" value="LLMJudge(rubric)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="610" y="235" width="150" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="p3" value="Dataset" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#66BB6A;fontColor=#FFF;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="510" y="290" width="180" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="p4" value="&lt;b&gt;Score + Pass/Fail + Reason&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2E7D32;fontColor=#FFF;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="510" y="340" width="180" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="pa1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="p1" target="p3"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="pa2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="p2" target="p3"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="pa3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="p3" target="p4"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <!-- DeepEval Path -->
+        <mxCell id="deepeval_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#E65100;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="820" y="190" width="350" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="deepeval_title" value="&lt;b&gt;DeepEval&lt;/b&gt;" style="text;html=1;fontSize=14;fontStyle=1;fillColor=#FF9800;fontColor=#FFFFFF;rounded=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="900" y="195" width="180" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="d1" value="LLMTestCase(input, actual)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="840" y="235" width="150" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="d2" value="GEval(criteria, params)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="235" width="150" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="d3" value="evaluate()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFB74D;fontColor=#FFF;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="900" y="290" width="180" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="d4" value="&lt;b&gt;Score (0-1) + Reason&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E65100;fontColor=#FFF;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="900" y="340" width="180" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="da1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="d1" target="d3"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="da2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="d2" target="d3"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="da3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="d3" target="d4"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <!-- Arrows from input to each framework -->
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#1565C0;" edge="1" parent="1" source="input" target="strands_box"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#2E7D32;" edge="1" parent="1" source="input" target="pydantic_box"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeWidth=2;strokeColor=#E65100;" edge="1" parent="1" source="input" target="deepeval_box"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <!-- Footer -->
+        <mxCell id="footer" value="Same input → Different APIs → Comparable scores" style="text;html=1;fontSize=12;fontStyle=2;align=center;verticalAlign=middle;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="400" y="420" width="400" height="25" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
