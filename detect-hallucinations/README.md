@@ -22,7 +22,7 @@ This section compares three approaches to hallucination detection, giving you op
 
 **Real-time detection** uses Strands hooks to intercept agent outputs and check for hallucinations before they reach the end user. Based on [StepShield](https://arxiv.org/abs/2601.22136) (Jan 2026).
 
-![4 approaches to hallucination detection: rubric, claims, decomposition, hooks](images/hallucination-detection-approaches.png)
+![4 approaches to hallucination detection: rubric, claims, decomposition, hooks](images/ai-agent-hallucination-detection-four-approaches-comparison.png)
 
 ## Choosing Your Framework
 

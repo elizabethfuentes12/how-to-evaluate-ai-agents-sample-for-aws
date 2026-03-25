@@ -34,7 +34,7 @@ These 3 were selected because they are the only ones with **dedicated, open-sour
 
 If you use CrewAI, LangGraph, or AutoGen to **build** your agent, you still need one of these 3 frameworks to **evaluate** it. DeepEval in particular is framework-agnostic and works with any agent.
 
-![Evaluation flow comparison: how the 3 frameworks process the same data](images/evaluation-flow.png)
+![Evaluation flow comparison: how the 3 frameworks process the same data](images/strands-vs-pydanticai-vs-deepeval-evaluation-framework-comparison.png)
 
 ---
 
