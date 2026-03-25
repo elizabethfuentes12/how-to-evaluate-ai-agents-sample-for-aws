@@ -22,7 +22,7 @@ This section implements three research-backed techniques. Similar patterns apply
 
 **Risk signals** in trajectories include: tool call failures, duplicate calls, calls to irrelevant tools, excessive model reasoning cycles, and high latency per step.
 
-![Trajectory evaluation flow: capture with hooks, evaluate with 3 approaches](images/trajectory-evaluation-flow.svg)
+![Trajectory evaluation flow: capture with hooks, evaluate with 3 approaches](images/trajectory-evaluation-flow.png)
 
 ## Prerequisites
 
