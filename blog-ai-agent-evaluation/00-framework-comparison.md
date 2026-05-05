@@ -1,6 +1,12 @@
-# How to Evaluate AI Agents - A Head-to-Head Framework Comparison
-
-[![Python](https://img.shields.io/badge/Python-3.10+-green.svg?style=flat-square&logo=python)](https://python.org) [![AWS](https://img.shields.io/badge/AWS-Bedrock-orange.svg?style=flat-square&logo=amazon-aws)](https://aws.amazon.com/bedrock/) [![Strands](https://img.shields.io/badge/Strands_Agents-blue.svg?style=flat-square)](https://strandsagents.com)
+---
+title: "Framework Comparison: Which Tool Best Evaluates AI Agents? Strands vs PydanticAI vs DeepEval"
+published: false
+description: "Compare Strands, PydanticAI, and DeepEval for AI agent evaluation. Same test cases, same rubrics, different frameworks. Code examples and results."
+tags: ai, python, tutorial, programming
+series: "AI Agent Evaluation with Strands on AWS"
+canonical_url: ""
+cover_image: ""
+---
 
 You built an AI agent. It calls tools, reasons over data, and produces answers. But **how do you know if it's production-ready?**
 
@@ -573,6 +579,94 @@ There is no single "best" evaluation framework. The right choice depends on your
 **Strands Agents** is the most cohesive option if you build on AWS. Agent creation, tool calling, trajectory capture, and evaluation live in the same ecosystem. The hooks system and built-in metrics mean evaluation is instrumented into the agent runtime, not bolted on after the fact. **PydanticAI** is the most elegant option if you value type safety and structured evaluation pipelines. YAML datasets, report diffing, and the `Evaluator` protocol make it ideal for teams that want evaluation-as-code with strong guarantees. **DeepEval** is the most comprehensive option if you want specialized metrics without building them yourself. Over 30 metrics, including purpose-built hallucination detection and faithfulness checking, let you evaluate immediately without writing custom rubrics.
 
 The evaluation concepts (LLM-as-judge, trajectory scoring, hallucination detection) are framework-independent. The [research papers](../RESEARCH.md) and techniques behind them work regardless of which framework you choose. For the full list of 45+ papers that informed this comparison, see the [RESEARCH.md](../RESEARCH.md) file.
+
+---
+
+## Amazon Bedrock AgentCore: A Fourth Option
+
+Amazon Bedrock AgentCore provides built-in evaluators and managed deployment for agents. If you're committed to AWS and want a fully managed solution, AgentCore is worth considering alongside the open-source frameworks.
+
+### Built-In Evaluators
+
+AgentCore includes 13 pre-built evaluators accessible via the `agentcore` CLI and AWS SDK:
+
+| Evaluator | What It Measures | When to Use |
+|-----------|-----------------|-------------|
+| `Builtin.Helpfulness` | Output quality and relevance | Same use case as Strands OutputEvaluator |
+| `Builtin.GoalSuccessRate` | Task completion accuracy | Binary success metric (compare to trajectory scoring) |
+| `Builtin.ToolSelection` | Tool choice correctness | Same as Strands ToolCalled or DeepEval ToolCorrectnessMetric |
+| `Builtin.Faithfulness` | Grounding in retrieved context | Same as DeepEval FaithfulnessMetric |
+| `Builtin.Harmfulness` | Safety and policy compliance | Detects unsafe outputs |
+
+**Running evaluations:**
+
+```bash
+# Evaluate agent with AgentCore CLI
+agentcore run eval \
+  --agent-id "agent-abc123" \
+  --evaluator "Builtin.Helpfulness" \
+  --test-cases "test-cases.json" \
+  --output "results.json"
+
+# View results
+cat results.json | jq '.results[] | {query, score, reason}'
+```
+
+### Trace Capture for Observability
+
+AgentCore logs full execution traces to CloudWatch when you enable tracing:
+
+```python
+import boto3
+
+bedrock_agent_runtime = boto3.client('bedrock-agent-runtime')
+
+response = bedrock_agent_runtime.invoke_agent(
+    agentId='agent-abc123',
+    agentAliasId='alias-xyz789',
+    sessionId='session-001',
+    inputText='Find hotels in Paris',
+    enableTrace=True  # ← Captures tool calls, reasoning, observations
+)
+
+# Extract trace events for analysis
+for event in response['completion']:
+    if 'trace' in event:
+        trace = event['trace']['trace']
+        if 'orchestrationTrace' in trace:
+            rationale = trace['orchestrationTrace'].get('rationale', {}).get('text', '')
+            print(f"Agent reasoning: {rationale}")
+```
+
+### Comparison: AgentCore vs Open-Source Frameworks
+
+| Feature | Strands | PydanticAI | DeepEval | AgentCore |
+|---------|:-------:|:----------:|:--------:|:---------:|
+| **Framework-agnostic** | Yes | Yes | Yes | No (Bedrock only) |
+| **Deployment** | Self-hosted | Self-hosted | Self-hosted | Fully managed AWS |
+| **Built-in evaluators** | 5+ (OutputEvaluator, TrajectoryEvaluator, ToolCalled) | LLMJudge, HasMatchingSpan | 30+ metrics | 13 built-in |
+| **Trace capture** | OpenTelemetry (always on) | Via Logfire (optional) | Manual instrumentation | AgentCore traces (opt-in) |
+| **CloudWatch integration** | Export spans to CW | Manual | Manual | Native |
+| **Cost tracking** | Built-in via `result.metrics` | Manual | Manual | Extract from traces |
+| **Custom evaluators** | Python functions | Python functions | Metric subclasses | Lambda functions or LLM-based |
+
+**When to use AgentCore:**
+- You're already on AWS and want a managed service
+- You need CloudWatch-native observability and compliance logging
+- Your team prefers infrastructure-as-code (CDK/CloudFormation) over custom evaluation scripts
+- You don't need to evaluate agents on other cloud providers
+
+**When to use open-source frameworks:**
+- Multi-cloud deployment (Strands works with Bedrock, OpenAI, Anthropic, Ollama)
+- Need fine-grained control over evaluation logic
+- Want to iterate quickly on custom metrics without deploying Lambda functions
+- Research or prototyping where flexibility > managed infrastructure
+
+### AgentCore Resources
+
+- [AWS Bedrock Agents Documentation](https://docs.aws.amazon.com/bedrock/latest/userguide/agents.html?trk=87c4c426-cddf-4799-a299-273337552ad8&sc_channel=el)
+- [AgentCore Built-in Evaluators](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-test.html?trk=87c4c426-cddf-4799-a299-273337552ad8&sc_channel=el)
+- [Testing and Evaluating Agents](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-test.html?trk=87c4c426-cddf-4799-a299-273337552ad8&sc_channel=el)
 
 ---
 

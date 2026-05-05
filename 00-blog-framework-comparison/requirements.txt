@@ -1,4 +1,5 @@
 strands-agents>=1.32.0
+strands-agents[openai]
 strands-agents-evals>=0.1.11
 strands-agents-tools>=0.1.0
 pydantic-evals>=1.70.0

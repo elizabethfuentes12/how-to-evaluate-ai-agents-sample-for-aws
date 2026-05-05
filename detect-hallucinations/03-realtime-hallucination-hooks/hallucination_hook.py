@@ -18,7 +18,7 @@ from strands.models.openai import OpenAIModel
 from strands_evals.evaluators import OutputEvaluator
 from strands_evals import Experiment, Case
 
-MODEL_ID = "gpt-4o-mini"
+DEFAULT_MODEL = OpenAIModel(model_id="gpt-4o-mini")
 
 GROUNDING_RUBRIC = (
     "Check if the response is grounded in the provided context (tool results).\n"
@@ -40,8 +40,8 @@ class HallucinationDetector(HookProvider):
     it is flagged as a potential hallucination.
     """
 
-    def __init__(self, model_id: str = MODEL_ID, threshold: float = 0.5):
-        self.model_id = model_id
+    def __init__(self, model: OpenAIModel = None, threshold: float = 0.5):
+        self.model = model or DEFAULT_MODEL
         self.threshold = threshold
         self.tool_outputs: list[str] = []
         self.checks: list[dict] = []
@@ -87,7 +87,7 @@ class HallucinationDetector(HookProvider):
             input=response_text[:200],
             expected_output=context,
         )
-        evaluator = OutputEvaluator(rubric=GROUNDING_RUBRIC, model=self.model_id)
+        evaluator = OutputEvaluator(rubric=GROUNDING_RUBRIC, model=self.model)
         exp = Experiment(cases=[check_case], evaluators=[evaluator])
         reports = exp.run_evaluations(lambda c: response_text)
 
