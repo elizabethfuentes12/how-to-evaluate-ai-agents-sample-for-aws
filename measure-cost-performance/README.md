@@ -22,6 +22,8 @@ This section implements three cost-aware evaluation techniques. Similar patterns
 
 **Pareto frontier** identifies models where no other model is both cheaper and higher quality. Models on the frontier are the optimal choices.
 
+![Cost-quality Pareto frontier comparing Claude Sonnet, Haiku, and Nova models across quality score and cost per query](../blog-ai-agent-evaluation/images/ai-agent-cost-quality-pareto-frontier-model-comparison.png)
+
 ## Prerequisites
 
 ```bash

@@ -22,6 +22,8 @@ This section implements three research-backed techniques for building reliable L
 
 **Multi-judge ensembles** reduce the impact of any single judge's biases. By aggregating scores from multiple models or multiple prompt orderings, you get more reliable evaluation results.
 
+![LLM-as-Judge evaluation pipeline showing rubric design, judge execution, and bias detection](../blog-ai-agent-evaluation/images/llm-judge-evaluation-pipeline.png)
+
 ## Prerequisites
 
 ```bash
