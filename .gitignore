@@ -226,3 +226,7 @@ bar-raiser-report-*.md
 # Claude Code project files (local config, never commit)
 .claude/
 CLAUDE.md
+
+# Internal documentation and scripts (not for public repo)
+RESEARCH.md
+fix_all_notebooks.py
