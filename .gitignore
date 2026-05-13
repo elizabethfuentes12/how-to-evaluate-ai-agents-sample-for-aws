@@ -205,3 +205,24 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Blog markdown files (images must remain for README visibility)
+blog-ai-agent-evaluation/*.md
+!blog-ai-agent-evaluation/images/
+
+# Temporary files
+*.d2
+*.drawio
+*-old*
+*-backup*
+.DS_Store
+bar-raiser-report-*.md
+
+# DeepEval cache and telemetry
+.deepeval/
+.deepeval-cache.json
+.deepeval_telemetry.txt
+
+# Claude Code project files (local config, never commit)
+.claude/
+CLAUDE.md

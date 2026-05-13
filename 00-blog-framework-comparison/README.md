@@ -28,11 +28,11 @@ These 3 were selected because they are the only ones with **dedicated, open-sour
 
 | Framework | Why Not Included |
 |-----------|-----------------|
-| **CrewAI** (47K stars) | `crewai test` only supports OpenAI, provides basic 1-10 scoring. No rubrics, no trajectory eval, no hallucination detection. |
-| **LangGraph** (27K stars) | Evaluation lives in **LangSmith** (paid SaaS), not in the open-source framework. |
-| **AutoGen** (56K stars) | Has AutoGen Bench for benchmarking but no evaluation SDK with comparable metrics. |
-| **OpenAI Agents SDK** (20K stars) | Provides tracing hooks but no evaluation library. Pair it with DeepEval to evaluate. |
-| **Google ADK** (19K stars) | Has `adk eval` CLI but tightly coupled to the Gemini ecosystem. |
+| **CrewAI** | `crewai test` only supports OpenAI, provides basic 1-10 scoring. No rubrics, no trajectory eval, no hallucination detection. |
+| **LangGraph** | Evaluation lives in **LangSmith** (paid SaaS), not in the open-source framework. |
+| **AutoGen** | Has AutoGen Bench for benchmarking but no evaluation SDK with comparable metrics. |
+| **OpenAI Agents SDK** | Provides tracing hooks but no evaluation library. Pair it with DeepEval to evaluate. |
+| **Google ADK** | Has `adk eval` CLI but tightly coupled to the Gemini ecosystem. |
 
 If you use CrewAI, LangGraph, or AutoGen to **build** your agent, you still need one of these 3 frameworks to **evaluate** it. DeepEval in particular is framework-agnostic and works with any agent.
 
