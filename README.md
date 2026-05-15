@@ -1,4 +1,4 @@
-# Evaluate AI Agents with Strands: 19 Research-Backed Demos on AWS
+# Evaluate AI Agents with Strands
 
 [![License](https://img.shields.io/badge/License-MIT--0-blue.svg?style=for-the-badge)](LICENSE) [![Python](https://img.shields.io/badge/Python-3.10+-green.svg?style=for-the-badge&logo=python)](https://python.org) [![AWS Bedrock](https://img.shields.io/badge/AWS-Bedrock-orange.svg?style=for-the-badge&logo=amazon-aws)](https://aws.amazon.com/bedrock/) [![Strands Agents](https://img.shields.io/badge/Strands_Agents-blue.svg?style=for-the-badge)](https://strandsagents.com)
 
