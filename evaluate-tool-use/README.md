@@ -37,5 +37,5 @@ This section implements three evaluation techniques, from deterministic checks (
 cd evaluate-tool-use
 python3 -m venv .venv
 source .venv/bin/activate
-pip install strands-agents strands-agents-evals boto3
+pip install strands-agents[openai] strands-agents-evals boto3 matplotlib nest-asyncio
 ```

@@ -56,19 +56,29 @@ class TrajectoryPlugin(HookProvider):
         start = self._pending.pop(tool_id, time.time())
         duration_ms = (time.time() - start) * 1000
 
-        # Extract text output from tool result
+        # AfterToolCallEvent.result is either a ToolResult (dict-like) on success
+        # or an Exception if the tool raised. Handle both: a raised tool must be
+        # recorded as a failed call, not crash the plugin.
+        result = event.result
+        errored = isinstance(result, Exception)
+
         output_text = ""
-        for content in event.result.get("content", []):
-            if "text" in content:
-                output_text += content["text"]
+        status = "error" if errored else "unknown"
+        if not errored and hasattr(result, "get"):
+            status = result.get("status", "unknown")
+            for content in result.get("content", []):
+                if "text" in content:
+                    output_text += content["text"]
+        elif errored:
+            output_text = f"{type(result).__name__}: {result}"
 
         self.trajectory.append({
             "tool": event.tool_use["name"],
             "input": event.tool_use.get("input", {}),
             "output": output_text[:200],
-            "status": event.result.get("status", "unknown"),
+            "status": status,
             "duration_ms": round(duration_ms, 1),
-            "had_error": event.exception is not None,
+            "had_error": errored or status == "error",
         })
 
     @property

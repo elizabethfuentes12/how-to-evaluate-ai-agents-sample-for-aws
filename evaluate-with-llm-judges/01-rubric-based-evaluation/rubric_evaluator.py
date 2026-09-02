@@ -6,7 +6,7 @@ measuring how well each rubric separates good from bad responses.
 
 from strands import Agent, tool
 from strands_evals import Experiment, Case
-from strands_evals.evaluators import OutputEvaluator, Contains
+from strands_evals.evaluators import OutputEvaluator
 
 
 # --- Travel Agent Tools ---

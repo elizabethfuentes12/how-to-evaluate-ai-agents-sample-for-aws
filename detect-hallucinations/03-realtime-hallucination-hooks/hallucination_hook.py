@@ -57,7 +57,13 @@ class HallucinationDetector(HookProvider):
     def _collect_tool_output(self, event: AfterToolCallEvent) -> None:
         """Collect every tool result as ground truth context."""
         tool_name = event.tool_use["name"]
-        for content in event.result.get("content", []):
+        result = event.result
+        # AfterToolCallEvent.result is a ToolResult (dict-like) on success or an
+        # Exception if the tool raised. Only successful, dict-like results carry
+        # content we can treat as ground truth; skip raised tools.
+        if not hasattr(result, "get"):
+            return
+        for content in result.get("content", []):
             if "text" in content:
                 self.tool_outputs.append(f"[{tool_name}]: {content['text']}")
 

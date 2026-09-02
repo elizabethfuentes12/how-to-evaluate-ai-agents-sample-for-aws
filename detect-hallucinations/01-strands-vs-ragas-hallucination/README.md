@@ -88,10 +88,11 @@ Case                           Truth           Strands         RAGAS
 ```python
 from strands_evals import Experiment, Case
 from strands_evals.evaluators import OutputEvaluator
+from strands.models.openai import OpenAIModel
 
 evaluator = OutputEvaluator(
     rubric="Score 1.0 if grounded in context. Score 0.0 if fabricated.",
-    model="us.anthropic.claude-sonnet-4-20250514-v1:0",
+    model=OpenAIModel(model_id="gpt-4o-mini"),
 )
 
 cases = [Case(input=question, expected_output=context)]
@@ -99,7 +100,7 @@ experiment = Experiment(cases=cases, evaluators=[evaluator])
 reports = experiment.run_evaluations(lambda case: response)
 ```
 
-**Strengths**: No extra dependencies, full control over criteria, native Bedrock.
+**Strengths**: No extra dependencies, full control over criteria, swappable model provider (OpenAI, Bedrock, Anthropic, Ollama).
 **Weakness**: Context goes in `expected_output` (workaround), no claim decomposition.
 
 ### RAGAS Approach: Purpose-Built Metrics

@@ -30,5 +30,5 @@ This section implements three cost-aware evaluation techniques. Similar patterns
 cd measure-cost-performance
 python3 -m venv .venv
 source .venv/bin/activate
-pip install strands-agents strands-agents-evals boto3
+pip install strands-agents[openai] strands-agents-evals boto3 matplotlib nest-asyncio
 ```

@@ -30,5 +30,5 @@ This section implements three research-backed techniques. Similar patterns apply
 cd evaluate-agent-trajectories
 python3 -m venv .venv
 source .venv/bin/activate
-pip install strands-agents strands-agents-evals boto3
+pip install strands-agents[openai] strands-agents-evals boto3 matplotlib nest-asyncio
 ```

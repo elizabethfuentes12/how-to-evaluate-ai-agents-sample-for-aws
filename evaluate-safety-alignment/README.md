@@ -28,5 +28,5 @@ This section implements three safety evaluation techniques. Similar patterns app
 cd evaluate-safety-alignment
 python3 -m venv .venv
 source .venv/bin/activate
-pip install strands-agents strands-agents-evals boto3
+pip install strands-agents[openai] strands-agents-evals boto3 matplotlib nest-asyncio
 ```

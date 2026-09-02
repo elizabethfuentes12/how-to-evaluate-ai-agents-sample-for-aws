@@ -34,7 +34,7 @@ Define **explicit scoring rubrics** with concrete criteria at each score level. 
 Strands provides `OutputEvaluator` with built-in rubric support and the `Experiment` class for batch evaluation:
 
 ```python
-evaluator = OutputEvaluator(rubric="your criteria...", model="bedrock-model-id")
+evaluator = OutputEvaluator(rubric="your criteria...", model=OpenAIModel(model_id="gpt-4o-mini"))
 experiment = Experiment(cases=test_cases, evaluators=[evaluator])
 reports = experiment.run_evaluations(task_function)
 reports[0].display()  # Rich table with scores and reasons
@@ -134,6 +134,7 @@ cases = [
 
 ```python
 from strands_evals.evaluators import OutputEvaluator
+from strands.models.openai import OpenAIModel
 
 evaluator = OutputEvaluator(
     rubric=(
@@ -143,7 +144,7 @@ evaluator = OutputEvaluator(
         "- 0.2-0.4: Vague without actionable information\n"
         "- 0.0-0.1: Contains fabricated information"
     ),
-    model="us.anthropic.claude-sonnet-4-20250514-v1:0",
+    model=OpenAIModel(model_id="gpt-4o-mini"),
 )
 ```
 
